@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Parkit | Search places</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy"/>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+      <link rel="stylesheet" type="text/css" href="base.css" data-rel-css="" />
+
+  <!-- CSS for each example: -->
+  <link rel="stylesheet" type="text/css" href="example2.css" data-rel-css="" />
+</head>
+
+<body style="color:black">
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
+	<script type="text/javascript" src="http://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="example2.css" data-rel-css="" />
+	
+	<script type="text/javascript" src="search.js"></script>
+	
+	
+	<div class="hero">
+	    <div class="row">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <a class="navbar-brand" href=""><b>PARK</b>IT</a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+
+                </div>
+
+                <ul class="nav navbar-nav pull-right" id="topNavBar">
+                    <li>
+                        <a href="SearchPlace.html">
+                            Search
+
+                        </a>
+                    </li>
+                    					<li>
+                        <a href="history.html">
+                            History
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html" class="pull-rignt">
+                            <span class="glyphicon glyphicon-log-out"></span><label id="username"></label>
+
+                        </a>
+                    </li>
+                    	
+                </ul>
+
+
+
+            </div>
+        </nav>
+    </div>
+		<h1 style="color: black">Reserve A Parking Space</h1>
+		<div class="container" style="color: black">
+		
+		
+		<div class="panel panel-default" id="stp1" name="stp1">
+			<div class="panel-heading"> Step 1: <label id="name"></label>&nbsp Prices </div>
+			<div class="panel-body"> 
+				
+				<div class="row">1 Hour   : $<label id="hr1"></label></div>
+				<div class="row">3 Hours  : $<label id="hr2"></label></div>
+				<div class="row">Max      : $<label id="max"></label></div>
+				<button class="form-control btn btn-success" onclick="stp1next()">Next</button>
+			</div>
+		
+		</div>
+		
+		<div class="panel panel-default" id="stp2" name="stp2">
+			<div class="panel-heading">Step 2 : Time Slot</div>
+			<div id="step1div" class="panel-body">
+				<div class="form-group">
+					<label> Date</label>
+					<input type="Date" id="rDate" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Time</label>
+					<input type="Time" id="rTime" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Plan</label>
+					<select id="rPlan" class="form-control dropdown">
+					<option value="1Hr">1Hr</option>
+					<option value="3Hr">3Hr</option>
+					<option value="max">Max(till 5am)</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<button class=" btn btn-success form-control" onclick="stp2next()">Next</button>
+				</div>
+			</div>
+			</div>
+			
+			<div class="panel panel-default" id="stp3">
+			<div class="panel-heading">Payment</div>
+			<div class="panel-body">
+			<script src="https://js.stripe.com/v3/"></script>
+
+<form action="/charge" method="post" id="payment-form">
+  <div class="form-row">
+    <label for="card-element">
+      Credit or debit card
+    </label>
+    <div id="card-element">
+      <!-- a Stripe Element will be inserted here. -->
+    </div>
+
+    <!-- Used to display form errors -->
+    <div id="card-errors" role="alert"></div>
+  </div>
+
+  <button class="btn btn-success form-control">Reserve A Spot</button>
+ 
+</form>
+	</div>
+	
+	
+	</div>
+	<div class="panel panel-success" id="success">
+		<div class="panel-body">
+		
+		 <div class="success">
+          <div class="icon">
+            <svg width="84px" height="84px" viewBox="0 0 84 84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <circle class="border" cx="42" cy="42" r="40" stroke-linecap="round" stroke-width="4" stroke="#000" fill="none"></circle>
+              <path class="checkmark" stroke-linecap="round" stroke-linejoin="round" d="M23.375 42.5488281 36.8840688 56.0578969 64.891932 28.0500338" stroke-width="4" stroke="#000" fill="none"></path>
+            </svg>
+          </div>
+          <h4>SCAN ON ARRIVAL</h4>
+		 <img id="qrc"/>
+		 </div>
+		
+		</div>
+		</div>
+
+
+<script type="text/javascript">
+//Create a Stripe client
+var stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+
+// Create an instance of Elements
+var elements = stripe.elements();
+
+// Custom styling can be passed to options when creating an Element.
+// (Note that this demo uses a wider set of styles than the guide below.)
+var style = {
+  base: {
+    color: '#32325d',
+    lineHeight: '18px',
+    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+    fontSmoothing: 'antialiased',
+    fontSize: '16px',
+    '::placeholder': {
+      color: '#aab7c4'
+    }
+  },
+  invalid: {
+    color: '#fa755a',
+    iconColor: '#fa755a'
+  }
+};
+
+
+// Create an instance of the card Element
+var card = elements.create('card', {style: style});
+
+// Add an instance of the card Element into the `card-element` <div>
+card.mount('#card-element');
+
+// Handle real-time validation errors from the card Element.
+card.addEventListener('change', function(event) {
+  var displayError = document.getElementById('card-errors');
+  if (event.error) {
+    displayError.textContent = event.error.message;
+  } else {
+    displayError.textContent = '';
+  }
+});
+
+// Handle form submission
+var form = document.getElementById('payment-form');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  stripe.createToken(card).then(function(result) {
+    if (result.error) {
+      // Inform the user if there was an error
+      var errorElement = document.getElementById('card-errors');
+      errorElement.textContent = result.error.message;
+    } else {
+      // Send the token to your server
+      
+      save(result.token)
+      
+    }
+  });
+});
+</script>		
+ <style>
+      input, select, textarea{
+    color: black;
+}
+
+textarea:focus, input:focus {
+    color: black;
+}
+
+/**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+.StripeElement {
+  background-color: white;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+      </style>
+
+
+
+<script src="../../plugins/iCheck/icheck.min.js"></script>
+
+<script>
+
+var entity;
+$( document ).ready(function() {
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+	var name = url.searchParams.get("name");
+	
+	$.get("http://parkit-env.us-east-2.elasticbeanstalk.com/api/parkingprice",{parkingLot:name}, function(data){
+		document.getElementById('name').innerHTML=data.name;
+		document.getElementById('hr1').innerHTML=data.price1hr;
+		document.getElementById('hr2').innerHTML=data.price3hr;
+		document.getElementById('max').innerHTML=data.priceMax;
+		entity = data;
+	});
+	document.getElementById('stp1').style.display = "block";
+	document.getElementById('stp2').style.display = "none";
+	document.getElementById('stp3').style.display = "none";
+	document.getElementById('success').style.display = "none";
+});
+	function stp1next()
+	{
+		document.getElementById('stp2').style.display = "block";
+		document.getElementById('stp1').style.display = "none";
+		document.getElementById('stp3').style.display = "none";
+		
+	}
+	function stp2next()
+	{
+		document.getElementById('stp3').style.display = "block";
+		document.getElementById('stp2').style.display = "none";
+		document.getElementById('stp1').style.display = "none";
+		
+	}
+	
+	function save(token){
+		var starttime = document.getElementById('rDate').value +" " + document.getElementById('rTime').value;
+		var tok= JSON.stringify(token);
+		var amount=0.0;
+		if(document.getElementById('rPlan').value==="1Hr")
+			{
+				amount = entity.price1hr;
+			}
+		else if(document.getElementById('rPlan').value==="3Hr")
+		{
+			amount = entity.price3hr;
+		}
+		else if(document.getElementById('rPlan').value==="max")
+		{
+			amount = entity.priceMax;	
+		}
+		var json ={
+		 username:localStorage.getItem("name")
+		, userId:localStorage.getItem("id")
+		, parkinglotname: entity.name
+		, plan:document.getElementById('rPlan').value
+		, amount: amount
+		, startTime:starttime
+		, tansactionToken: tok
+		
+		}
+		
+		
+		$.ajax({
+		    beforeSend: function(xhrObj){
+		        xhrObj.setRequestHeader("Content-Type","application/json");
+		        xhrObj.setRequestHeader("Accept","application/json");
+		    },
+		    type: "POST",
+		    url: 'api/reserve',       
+		    data: JSON.stringify(json),               
+		    dataType: "json",
+		    success: function(data){
+		    	var url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+JSON.stringify(data);
+				$("#qrc").attr("src", url);
+				document.getElementById('stp1').style.display = "none";
+				document.getElementById('stp2').style.display = "none";
+				document.getElementById('stp3').style.display = "none";
+				document.getElementById('success').style.display = "block";
+		    }
+		});
+		
+		console.log(JSON.stringify(json));
+		
+		
+	}
+</script>
+</body>
+</html>

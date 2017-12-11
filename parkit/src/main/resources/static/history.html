@@ -1,0 +1,168 @@
+<html>
+
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Parkit | History</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy"/>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+ 
+</head>
+
+<body>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
+	<script type="text/javascript" src="http://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="search.js"></script>
+<div class="hero">
+	    <div class="row">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <a class="navbar-brand" href=""><b>PARK</b>IT</a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+
+                </div>
+
+                <ul class="nav navbar-nav pull-right" id="topNavBar">
+                    <li>
+                        <a href="SearchPlace.html">
+                            Search
+
+                        </a>
+                    </li>
+										<li>
+                        <a href="history.html">
+                            History
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html" class="pull-rignt">
+                            <span class="glyphicon glyphicon-log-out"></span><label id="username"></label>
+
+                        </a>
+                    </li>
+                </ul>
+
+
+
+            </div>
+        </nav>
+    </div>
+		<h1 style="color: black">Reservation History</h1>
+		<div> 
+		<table id="history">
+		
+		<tr>
+			<th>Date </th>
+			<th>Parking lot</th>
+			<th>Plan</th>
+		</tr>
+		
+		</table>
+		
+		</div>
+		</div>
+		
+		<script>
+		
+		$( document ).ready(function() {
+			loadHistoy();
+			
+			
+		});
+		
+		
+		function loadHistoy() {
+	        var url = "api/reserve";
+
+	        if (!$.fn.dataTable.isDataTable('#history')) {
+	            var table = $('#history')
+	                .DataTable(
+	                {
+	                    "order": [[0, "asc"]],
+	                    "searching": false,
+	                    "paging": false,
+	                    ajax: {
+	                        url: url,
+	                        type: 'GET',
+	                        draw: 1,
+	                        data: {
+	                        	username: function () { return localStorage.getItem("name"); },
+	                        	userId: function () { return localStorage.getItem("id"); }
+	                        }
+	                    },
+	                    columns: [
+	                        {
+	                            data: 'parkinglotname'
+	                        },
+	                        {
+	                            data: 'startTime'
+	                        },
+	                        {
+	                            data: 'plan'
+	                        },
+	                        {
+	                            data: function (aData) {
+	                                return '<a href="qrc.html?id=' + aData.id+'">View Price</a>';
+	                            }
+	                        }
+	                    ],
+	                    fnRowCallback: function (
+	                        nRow, aData,
+	                        iDisplayIndex,
+	                        iDisplayIndexFull) {
+
+	                        return nRow;
+	                    }
+	                });
+	        }
+	        else {
+	            $('#history')
+	                .DataTable().ajax.reload();
+	        }
+	    }
+
+	
+		</script>
+		
+</body>
+
+</html>
